@@ -28,10 +28,11 @@ public class ArchimedSearchSpiral(Point spiralCenter) : ISearch
         {
             rectangleLeftTop = GetRectangleLeftTop(spiralPoint, rectangleSize);
 
-            var deltaAngle = SearchStepPixels / Math.Sqrt(radialGrowthPerRadian * radialGrowthPerRadian + radial * radial);
+            var deltaAngle = SearchStepPixels /
+                             Math.Sqrt(radialGrowthPerRadian * radialGrowthPerRadian + radial * radial);
             angleRadians += deltaAngle;
-            spiralPoint = GetSpiralPoint(radial, angleRadians);
             radial = radialGrowthPerRadian * angleRadians;
+            spiralPoint = GetSpiralPoint(radial, angleRadians);
         } while (placedRectangles.Any(r => r.IntersectsWith(new Rectangle(rectangleLeftTop, rectangleSize))));
 
 
